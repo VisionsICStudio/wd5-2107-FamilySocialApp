@@ -17,4 +17,4 @@ a viable source to authenticate the data piece collected and its origin, the dat
 can be requested and returned as a responce to the client for use however suits 
 their development needs.
 
-![CORS Principle](/img/cors_principle.png)
+![CORS Principle](./img/cors_principle.png)
