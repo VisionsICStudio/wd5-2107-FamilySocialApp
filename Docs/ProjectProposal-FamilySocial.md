@@ -1,6 +1,6 @@
 # FamilySocial App
 
-![FamilySocial Logo](/images/fs-logo.png)
+![FamilySocial Logo](./img/fs-logo.png)
 
 ## Application Definition Statement
 
@@ -12,7 +12,7 @@ All families. This market has a ceiling of the entire world because everyone has
 
 ## User Profile
 
-![The Smith Family](/images/happy-family.webp)
+![The Smith Family](./img/happy-family.webp)
 
 Since the users of this app can virtually be any person in the world. This application can provide service to anyone. I have chosen to display an image of a family. Families are the root users of this app. It is is fitting that a family is to be represented as the user profile.
 
@@ -65,7 +65,7 @@ The key features that addresses the problem that **FamilySocial** solves is more
 The only known 3rd party API **FamilySocial** will utilize is the chat feature in which is provided by
 Stream.io.
 
-![Stream.io](/images/art.png)
+![Stream.io](./img/art.png)
 
 ## References
 
