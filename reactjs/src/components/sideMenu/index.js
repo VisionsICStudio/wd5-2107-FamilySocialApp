@@ -45,7 +45,7 @@ export default class SideMenu extends React.Component {
                 <NavLink
                   exact
                   activeClassName="is-active"
-                  to={`/users/${currentUserId}`}
+                  to={`/profile/${currentUserId}`}
                 >
                   Profile
                 </NavLink>

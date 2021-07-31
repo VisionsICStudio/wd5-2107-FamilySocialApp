@@ -53,7 +53,7 @@ class Join extends Component {
 
     return (
       <form onSubmit={this.onSubmit} className={styles.form}>
-        <h1 className={styles.heading}>Join ShipIt</h1>
+        <h1 className={styles.heading}>Join FamillySocial</h1>
         <div className={styles.profilePic}>
           <Label className={styles.label}>Avatar</Label>
           {(showUpload || !avatar) && (
