@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import '@marcioferlan/react-profile-picture/build/ProfilePicture.css';
 import styles from './settings.module.css';
 
@@ -7,18 +8,30 @@ import PropTypes from 'prop-types';
 import ProfilePicture from '@marcioferlan/react-profile-picture';
 import { Button, Control, Field, Image, Input, Label } from 'bloomer';
 
-import userData from '../../exampleData/users.json';
-
 class Settings extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      user: {
+        avatar: '',
+        city: '',
+        state: '',
+        username: '',
+      },
+    };
     this.profilePictureRef = React.createRef();
   }
 
   componentDidMount() {
-    const { fetchUser } = this.props;
-    fetchUser();
+    const { su } = this.props;
+    this.setState({
+      user: {
+        avatar: su.picture.medium,
+        city: su.location.city,
+        state: su.location.state,
+        username: su.login.username,
+      },
+    });
   }
 
   handleInputChange = (event) => {
@@ -36,31 +49,24 @@ class Settings extends Component {
   onSubmit = (e) => {
     e.preventDefault();
     const { saveUser } = this.props;
-    const { avatar, city, state, username } = this.state;
+    const { user } = this.state;
 
     const PP = this.profilePictureRef.current;
     saveUser({
-      avatar: PP ? PP.getImageAsDataUrl() : avatar,
-      city,
-      state,
-      username,
+      avatar: PP ? PP.getImageAsDataUrl() : user.avatar,
+      city: user.city,
+      state: user.state,
+      username: user.username,
     });
   };
 
   render() {
+    const { su } = this.props;
     const {
-      user: {
-        avatar: defaultAvatar = '',
-        city: defaultCity = '',
-        state: defaultState = '',
-        username: defaultUsername = '',
-      },
-    } = this.props;
-    const {
-      avatar = defaultAvatar,
-      city = defaultCity,
-      state = defaultState,
-      username = defaultUsername,
+      avatar = su.picture.medium,
+      city = su.location.city,
+      state = su.location.state,
+      username = su.login.username,
       showUpload = false,
     } = this.state;
 
@@ -133,21 +139,11 @@ class Settings extends Component {
 }
 
 Settings.propTypes = {
-  fetchUser: PropTypes.func,
   saveUser: PropTypes.func,
-  user: PropTypes.shape({
-    avatar: PropTypes.string,
-    city: PropTypes.string,
-    events: PropTypes.arrayOf(PropTypes.object),
-    state: PropTypes.string,
-    username: PropTypes.string,
-  }),
 };
 
 Settings.defaultProps = {
-  fetchUser: () => {},
   saveUser: () => {},
-  user: userData[3],
 };
 
 export default Settings;

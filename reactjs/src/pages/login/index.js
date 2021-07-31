@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import styles from './login.module.css';
 
 import React, { Component } from 'react';
@@ -25,8 +26,13 @@ class Login extends Component {
 
   onSubmit = (e) => {
     e.preventDefault();
-    const { loginUser } = this.props;
+    const { loginUser, user } = this.props;
     const { password, username } = this.state;
+
+    this.setState({
+      password: user.login.password,
+      username: user.login.username,
+    });
 
     loginUser({
       password,

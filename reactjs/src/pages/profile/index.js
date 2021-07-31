@@ -1,9 +1,11 @@
+/* eslint-disable react/prop-types */
 import styles from './profile.module.css';
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import { Image, Tag } from 'bloomer';
+import { withRouter } from 'react-router';
 import { Link } from 'react-router-dom';
 
 import PostList from '../../components/postList';
@@ -22,17 +24,21 @@ class Profile extends Component {
   }
 
   render() {
-    const { posts, user } = this.props;
+    const { posts, su, user } = this.props;
     return (
       <>
         <div className={styles.profile}>
-          <Image isSize="64x64" src={user.avatar} className={styles.avatar} />
-          <h1 className={styles.heading}>{user.username}</h1>
+          <Image
+            isSize="64x64"
+            src={su.picture.medium}
+            className={styles.avatar}
+          />
+          <h1 className={styles.heading}>{su.login.username}</h1>
           <p className={styles.subTitle}>
             {' '}
-            {user.city}
+            {su.location.city}
             {', '}
-            {user.state}
+            {su.location.state}
           </p>
           <p className={styles.events}>
             Watched Events:
@@ -44,7 +50,7 @@ class Profile extends Component {
             ))}
           </p>
           <h2 className={styles.title}>
-            {user.username}
+            {su.login.username}
             &apos;s Posts
           </h2>
         </div>
@@ -72,4 +78,4 @@ Profile.defaultProps = {
   user: { ...userData[2], username: 'eMediaLab' },
 };
 
-export default Profile;
+export default withRouter(Profile);

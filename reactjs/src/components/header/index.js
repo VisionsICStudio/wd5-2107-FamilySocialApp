@@ -1,7 +1,8 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable react/jsx-one-expression-per-line */
 import styles from './header.module.css';
 
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import {
   Dropdown,
@@ -12,8 +13,9 @@ import {
 } from 'bloomer';
 import { Link, useHistory } from 'react-router-dom';
 
-export default function Header({ loggedIn, logout, user }) {
+export default function Header({ loggedIn, user }) {
   const history = useHistory();
+  const logout = () => {};
   const onClickLogout = (e) => {
     e.preventDefault();
     logout();
@@ -38,7 +40,7 @@ export default function Header({ loggedIn, logout, user }) {
           placeholder="search by keywords or events..."
         />
       </div>
-      {loggedIn && (
+      {loggedIn === true && (
         <div className={styles.loggedInMenu}>
           <Link to="/create-post" className={styles.navButton}>
             New Post
@@ -46,9 +48,9 @@ export default function Header({ loggedIn, logout, user }) {
           <Dropdown isHoverable isAlign="right">
             <DropdownTrigger aria-haspopup="true" aria-controls="dropdown-menu">
               <img
-                src={user.avatar}
+                src={user.picture.medium}
                 className={styles.avatar}
-                alt={user.name}
+                alt={user.name.first}
               />
               <Icon
                 icon="angle-down"
@@ -58,7 +60,10 @@ export default function Header({ loggedIn, logout, user }) {
             </DropdownTrigger>
             <DropdownMenu>
               <DropdownContent>
-                <Link to={`/users/${user.id}`} className="dropdown-item">
+                <Link
+                  to={`/profile/${user.login.uuid}`}
+                  className="dropdown-item"
+                >
                   Profile
                 </Link>
                 <Link to="/settings" className="dropdown-item">
@@ -77,35 +82,42 @@ export default function Header({ loggedIn, logout, user }) {
           </Dropdown>
         </div>
       )}
-
-      {!loggedIn && (
-        <div className={styles.guestMenu}>
-          <Link to="/login" className={styles.navLink}>
+      {loggedIn === false && (
+        <div className={styles.loggedInMenu}>
+          <Link to="/" className={styles.navButton}>
             Login
           </Link>
-          <Link to="/join" className={styles.navButton}>
-            Join Now
-          </Link>
+          <Dropdown isHoverable isAlign="right">
+            <DropdownTrigger aria-haspopup="true" aria-controls="dropdown-menu">
+              <img
+                src={user.picture.medium}
+                className={styles.avatar}
+                alt={user.name.first}
+              />
+              <Icon
+                icon="angle-down"
+                isSize="small"
+                className="fa fa-angle-down"
+              />
+            </DropdownTrigger>
+            <DropdownMenu>
+              <DropdownContent>
+                <h4>Welcome Guest</h4>
+                <hr />
+                <Link to="/" className="dropdown-item">
+                  Login
+                </Link>
+                <Link to="/about" className="dropdown-item">
+                  About
+                </Link>
+                <Link to="/join" className="dropdown-item">
+                  Join
+                </Link>
+              </DropdownContent>
+            </DropdownMenu>
+          </Dropdown>
         </div>
       )}
     </header>
   );
 }
-
-Header.propTypes = {
-  loggedIn: PropTypes.bool,
-  logout: PropTypes.func,
-  user: PropTypes.shape({
-    avatar: PropTypes.string,
-    id: PropTypes.string,
-    name: PropTypes.string,
-  }),
-};
-Header.defaultProps = {
-  loggedIn: true,
-  logout: () => {},
-  user: {
-    avatar: 'https://i.pravatar.cc/100',
-    id: 'ffc6d3db-3e8a-4d18-a18a-d3d8e9d62111',
-  },
-};
