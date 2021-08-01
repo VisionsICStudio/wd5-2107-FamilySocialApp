@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import styles from './sideMenu.module.css';
 
 import React from 'react';
@@ -10,12 +11,13 @@ import eventData from '../../exampleData/events.json';
 
 export default class SideMenu extends React.Component {
   componentDidMount() {
-    const { fetchWatching } = this.props;
+    const { fetchUser, fetchWatching } = this.props;
+    fetchUser();
     fetchWatching();
   }
 
   render() {
-    const { currentUserId, loggedIn, watching } = this.props;
+    const { loggedIn, user, watching } = this.props;
 
     return (
       <Menu className={styles.menu}>
@@ -45,7 +47,7 @@ export default class SideMenu extends React.Component {
                 <NavLink
                   exact
                   activeClassName="is-active"
-                  to={`/profile/${currentUserId}`}
+                  to={`/profile/${user.login.uuid}`}
                 >
                   Profile
                 </NavLink>
@@ -83,7 +85,7 @@ export default class SideMenu extends React.Component {
 }
 
 SideMenu.propTypes = {
-  currentUserId: PropTypes.string,
+  fetchUser: PropTypes.func,
   fetchWatching: PropTypes.func,
   loggedIn: PropTypes.bool,
   watching: PropTypes.arrayOf(
@@ -96,8 +98,8 @@ SideMenu.propTypes = {
 };
 
 SideMenu.defaultProps = {
-  currentUserId: 'ffc6d3db-3e8a-4d18-a18a-d3d8e9d62111',
+  fetchUser: () => {},
   fetchWatching: () => {},
-  loggedIn: true,
+  loggedIn: false,
   watching: eventData.slice(3, 10),
 };
