@@ -1,3 +1,4 @@
+/* eslint-disable sort-destructure-keys/sort-destructure-keys */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/jsx-one-expression-per-line */
 import styles from './header.module.css';
@@ -13,7 +14,7 @@ import {
 } from 'bloomer';
 import { Link, useHistory } from 'react-router-dom';
 
-export default function Header({ loggedIn, user }) {
+export default function Header({ logged, user }) {
   const history = useHistory();
   const logout = () => {};
   const onClickLogout = (e) => {
@@ -21,6 +22,7 @@ export default function Header({ loggedIn, user }) {
     logout();
     history.push('/');
   };
+
   return (
     <header className={styles.background}>
       <a href="/">
@@ -40,7 +42,7 @@ export default function Header({ loggedIn, user }) {
           placeholder="search by keywords or events..."
         />
       </div>
-      {loggedIn === true && (
+      {logged === true && (
         <div className={styles.loggedInMenu}>
           <Link to="/create-post" className={styles.navButton}>
             New Post
@@ -59,7 +61,8 @@ export default function Header({ loggedIn, user }) {
               />
             </DropdownTrigger>
             <DropdownMenu>
-              <DropdownContent>
+              <DropdownContent className={styles.ddContent}>
+                <h4 className={styles.ddTitle}>Welcome {user.name.first}</h4>
                 <Link
                   to={`/profile/${user.login.uuid}`}
                   className="dropdown-item"
@@ -82,7 +85,7 @@ export default function Header({ loggedIn, user }) {
           </Dropdown>
         </div>
       )}
-      {loggedIn === false && (
+      {logged === false && (
         <div className={styles.loggedInMenu}>
           <Link to="/" className={styles.navButton}>
             Login
@@ -90,9 +93,9 @@ export default function Header({ loggedIn, user }) {
           <Dropdown isHoverable isAlign="right">
             <DropdownTrigger aria-haspopup="true" aria-controls="dropdown-menu">
               <img
-                src={user.picture.medium}
+                src="../../images/default_avatar.png"
                 className={styles.avatar}
-                alt={user.name.first}
+                alt="default avatar"
               />
               <Icon
                 icon="angle-down"

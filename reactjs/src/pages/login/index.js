@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable react/prop-types */
 import styles from './login.module.css';
 
@@ -9,7 +10,7 @@ import { Button, Control, Field, Input, Label } from 'bloomer';
 class Login extends Component {
   constructor(props) {
     super(props);
-    this.state = { password: '', username: '' };
+    this.state = { loggedIn: true, password: '', username: '' };
   }
 
   handleInputChange = (event) => {
@@ -27,21 +28,23 @@ class Login extends Component {
   onSubmit = (e) => {
     e.preventDefault();
     const { loginUser, user } = this.props;
-    const { password, username } = this.state;
+    const { loggedIn, password, username } = this.state;
 
     this.setState({
+      loggedIn: true,
       password: user.login.password,
       username: user.login.username,
     });
 
     loginUser({
+      loggedIn,
       password,
       username,
     });
   };
 
   render() {
-    const { password, username } = this.state;
+    const { user } = this.props;
 
     return (
       <form onSubmit={this.onSubmit} className={styles.form}>
@@ -52,7 +55,7 @@ class Login extends Component {
             <Input
               className={styles.input}
               name="username"
-              value={username}
+              value={user.login.username}
               onChange={this.handleInputChange}
             />
           </Control>
@@ -64,7 +67,7 @@ class Login extends Component {
               className={styles.input}
               name="password"
               type="password"
-              value={password}
+              value={user.login.password}
               onChange={this.handleInputChange}
             />
           </Control>

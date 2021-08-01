@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import styles from './post.module.css';
 
 import React from 'react';
@@ -23,6 +24,7 @@ class Post extends React.Component {
     } = props;
     this.state = { focused: false, newComment: '' };
     fetchPost(postId);
+    console.log(props);
   }
 
   onSubmit = (e) => {
@@ -120,8 +122,8 @@ Post.propTypes = {
     commentCount: PropTypes.number,
     content: PropTypes.string,
     createdAt: PropTypes.string,
-    events: PropTypes.arrayOf(PropTypes.object),
     id: PropTypes.string,
+    tags: PropTypes.arrayOf(PropTypes.object),
     title: PropTypes.string,
     user: PropTypes.shape({
       username: PropTypes.string,

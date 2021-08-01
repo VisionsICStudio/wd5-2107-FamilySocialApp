@@ -1,5 +1,5 @@
 @value brand: '../../brand.module.css';
-@value dark, border, white, disabled, borderRadiusLg from brand;
+@value dark, border, white, selected, disabled, borderRadiusLg from brand;
 @value sideBarWidth from '../sideMenu/sideMenu.module.css';
 
 .background {
@@ -88,4 +88,23 @@
 .loggedInMenu {
   position: relative;
   padding: 14px 0;
+}
+
+.loginHeader {
+  position: relative;
+  top: 10px;
+  flex-grow: 0.5;
+  vertical-align: middle;
+  background-color: white;
+}
+
+.ddTitle {
+  position: relative;
+  vertical-align: middle;
+  text-indent: 5px;
+  color: selected;
+}
+
+.ddContent {
+  z-index: 2;
 }

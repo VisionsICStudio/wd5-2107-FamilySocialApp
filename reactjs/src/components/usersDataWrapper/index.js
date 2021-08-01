@@ -28,7 +28,7 @@ class UsersDataWrapper extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      loggedIn: false,
+      loggedIn: true,
       user: {
         cell: '',
         dob: {
@@ -144,15 +144,12 @@ class UsersDataWrapper extends Component {
   };
 
   render() {
-    const { loggedIn } = this.state;
-    const { users } = this.state;
-    const { user } = this.state;
-    console.log(user);
+    const { loggedIn, user, users } = this.state;
     return (
       <>
         <Router>
-          <Header user={user} loggedIn={loggedIn} />
-          <SideMenu />
+          <Header user={user} logged={loggedIn} />
+          <SideMenu loggedIn={loggedIn} user={user} />
           <main className={styles.content}>
             <Route exact path="/home" component={Home} />
             <Route exact path="/create-post" component={PostForm} />

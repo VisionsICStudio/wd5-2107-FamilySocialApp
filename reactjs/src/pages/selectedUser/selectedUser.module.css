@@ -1,6 +1,15 @@
 @value brand: '../../brand.module.css';
 @value dark, border, white, disabled, selected, background, active from brand;
 
+.cardContainer {
+  margin-top: 50px;
+  
+}
+
+.card {
+  padding-top: 25px;
+}
+
 .heading {
   composes: heading from brand;
   margin-bottom: 0;
@@ -37,9 +46,15 @@
   background-color: active;
 }
 
-.trial {
-  list-style: none;
+.trial, .labels {
   font-size: 16px;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.labels {
   color: border;
+}
+
+.navButton {
+  composes: button from brand;
 }
