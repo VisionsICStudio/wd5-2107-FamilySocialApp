@@ -1,5 +1,5 @@
 @value brand: '../../brand.module.css';
-@value white, active, background, dark from brand;
+@value white, active, selected, background, dark from brand;
 
 .users {
   display: grid;
@@ -12,6 +12,7 @@
   max-width: 200px;
   margin-bottom: 20px;
   color: white;
+  font-weight: bolder;
 }
 
 .avatar {
@@ -43,7 +44,9 @@
   margin-bottom: 40px;
   padding: 10px;
   vertical-align: middle;
-  background-color: dark;
+  background-color: white;
+  border: border solid 2px;
+  border-radius: 4px;
 }
 .searchBarIcon {
   margin-right: 5px;
@@ -64,5 +67,5 @@
   outline: none;
 }
 .searchBarInput::placeholder {
-  color: disabled;
+  color: selected;
 }

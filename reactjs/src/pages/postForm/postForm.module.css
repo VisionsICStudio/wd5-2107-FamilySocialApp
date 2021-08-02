@@ -29,7 +29,7 @@
 .createPost :global .editor-toolbar.fullscreen,
 .createPost :global .editor-preview {
   color: black;
-  background-color: dark;
+  background-color: white;
 }
 
 .createPost :global .editor-toolbar.fullscreen::before,
@@ -52,7 +52,7 @@
   /* shared font styles */
   font-size: 1rem;
   line-height: 1.2;
-  background-color: dark;
+  background-color: white;
   border: 1px solid border;
   border-radius: 1px;
 

@@ -15,9 +15,9 @@ function SelectedUser({ users }) {
           <div className={`container ${styles.cardContainer}`}>
             <div className={`card flex-row flex-wrap ${styles.card}`}>
               <div className="card-header border-0">
-                <img src={selectedUser.picture.large} alt={selectedUser.name.first} />
+                <img src={selectedUser.picture.large} alt={selectedUser.name.first} className={styles.userImg} />
               </div>
-              <div className="card-block px-2">
+              <div className={`card-block px-2 ${styles.cardBlock}`}>
                 <h4 className={`card-title ${styles.trial}`}>
                   <strong className={styles.labels}>Name:</strong>
                   {' '}
@@ -30,6 +30,38 @@ function SelectedUser({ users }) {
                   {' '}
                   {selectedUser.login.username}
                 </p>
+                <p className={`card-text ${styles.trial}`}>
+                  <strong className={styles.labels}>Address:</strong>
+                  {' '}
+                  {selectedUser.location.street.number}
+                  {' '}
+                  {selectedUser.location.street.name}
+                </p>
+                <p className={`card-text ${styles.trial}`}>
+                  {' '}
+                  {selectedUser.location.city}
+                  ,
+                  {' '}
+                  {selectedUser.location.state}
+                  {' '}
+                  {selectedUser.location.postcode}
+                </p>
+                <p className={`card-text ${styles.trial}`}>
+                  <strong className={styles.labels}>Email Address:</strong>
+                  {' '}
+                  {selectedUser.email}
+                </p>
+                <p className={`card-text ${styles.trial}`}>
+                  <strong className={styles.labels}>Phone Number:</strong>
+                  {' '}
+                  {selectedUser.phone}
+                </p>
+                <p className={`card-text ${styles.trial}`}>
+                  <strong className={styles.labels}>Mobile Number:</strong>
+                  {' '}
+                  {selectedUser.cell}
+                </p>
+                <br />
                 <a href="/users" className={styles.navButton}>Back To Users</a>
               </div>
               <div className="w-100" />
