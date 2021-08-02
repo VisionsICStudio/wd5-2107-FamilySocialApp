@@ -2,7 +2,7 @@
   "name": "familysocialapp",
   "version": "0.1.2",
   "private": true,
-  "homepage": "https://visionsicstudio.github.io/wd5-2107-FamilySocialApp/",
+  "homepage": "https://visionsicstudio.github.io/wd5-2107-FamilySocialApp",
   "dependencies": {
     "@marcioferlan/react-profile-picture": "0.0.2",
     "@testing-library/jest-dom": "^5.1.1",
