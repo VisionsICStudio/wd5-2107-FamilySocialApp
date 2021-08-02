@@ -2,6 +2,7 @@
   "name": "familysocialapp",
   "version": "0.1.2",
   "private": true,
+  "homepage": "https://visionsicstudio.github.io/wd5-2107-FamilySocialApp",
   "dependencies": {
     "@marcioferlan/react-profile-picture": "0.0.2",
     "@testing-library/jest-dom": "^5.1.1",
@@ -12,6 +13,7 @@
     "bulma": "^0.9.1",
     "cors": "^2.8.5",
     "easymde": "^2.14.0",
+    "gh-pages": "^3.2.3",
     "helmet": "^4.6.0",
     "moment": "^2.24.0",
     "nodemon": "^2.0.7",
@@ -30,6 +32,8 @@
     "sequelize-cli": "^6.2.0"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
