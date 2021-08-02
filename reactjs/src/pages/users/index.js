@@ -11,11 +11,6 @@ const Users = ({ users }) => {
   return (
     <>
       <div className={styles.searchBar}>
-        <img
-          className={styles.searchBarIcon}
-          src="/search_icon.svg"
-          alt="search"
-        />
         <input
           className={styles.searchBarInput}
           name="searchFilter"

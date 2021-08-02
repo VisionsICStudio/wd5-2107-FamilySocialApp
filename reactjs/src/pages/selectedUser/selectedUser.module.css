@@ -58,3 +58,14 @@
 .navButton {
   composes: button from brand;
 }
+
+.userImg {
+  position: relative;
+  width: 200px;
+  height: 250px;
+  border-radius: 50%;
+}
+
+.cardBlock {
+  margin-left: 20px;
+}
