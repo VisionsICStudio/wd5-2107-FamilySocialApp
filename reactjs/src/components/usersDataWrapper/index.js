@@ -4,7 +4,7 @@ import styles from './usersDataWrapper.module.css';
 
 import React, { Component } from 'react';
 
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { HashRouter as Router, Route } from 'react-router-dom';
 
 // pages
 import Event from '../../pages/event';
